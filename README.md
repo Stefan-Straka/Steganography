@@ -32,7 +32,7 @@ Inside classes Decoding and Encoding, rename variable "fileName" to the appropri
 Before running program and choosing encoding mode make sure you have fresh files inside poroject structure.
 It is not recommended to encode hidden message into file where there is already encoded hidden message.
 Fresh file are inside directory "Fresh files to use".
-/my-project ├── src │ ├── main.java │ └── utils.java ├── README.md └── .gitignore
+
 
 
 1. Run class Controler and chose mode you want
