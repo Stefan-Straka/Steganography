@@ -37,23 +37,25 @@ Download Maven and install it on your system.
     
 ## 📝 Usage
 ### Preparation
-You can use files that are already inside the project structure, or you could upload your own.
-Supported files: txt, srt, html, xml, md
+You can use files that are already inside the project structure, or you could upload your own.  
+Supported files: txt, srt, html, xml, md  
 Inside classes Decoding and Encoding, rename variable "fileName" to the appropriate file you want to use.
-Before running program copy file you want to use from "Fresh files to use" directory to "file to use" directory.
+Before running program copy file you want to use from "fresh-files-to-use" directory to "file-to-use" directory.
+```bash
 steganography/
 ├── src/
 │   ├── main/
-│   │   ├── java/
-│   │   └── resources/
-│   │       └── Fresh files to use/
-│   │           ├── randomText.txt
-│   │           └── Silo.S02E02...srt
+│   ├── resources/
+│   │   ├── files-to-use/
+│   │   └── fresh-files-to-use/           
+│   │          
 │   └── test/
 ├── target/
 ├── .gitignore
 ├── pom.xml
-└── README.md
+└── steganography.iml
+```
+
 It is not recommended to encode hidden message into file where there is already encoded hidden message.
 
 
