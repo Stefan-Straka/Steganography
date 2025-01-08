@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 
 
+
+
 public class Steganography {
 
     /**
@@ -61,6 +63,22 @@ public class Steganography {
         return letter;
     }
 
+    public String getCharToAdd() {
+        return charToAdd;
+    }
+
+    public int getSecondDigitDecimalNumber() {
+        return secondDigitDecimalNumber;
+    }
+
+    public int[] getFourBitsArray() {
+        return fourBitsArray;
+    }
+
+    public static int getCurrentLine() {
+        return currentLine;
+    }
+
     public ArrayList<Character> getHiddenMessage() {
         return hiddenMessage;
     }
@@ -77,6 +95,42 @@ public class Steganography {
         return decNumberInAsciiTable;
     }
 
+    public void setLetter(char letter) {
+        this.letter = letter;
+    }
+
+    public void setCharToAdd(String charToAdd) {
+        this.charToAdd = charToAdd;
+    }
+
+    public void setFirstDigitDecimalNumber(int firstDigitDecimalNumber) {
+        this.firstDigitDecimalNumber = firstDigitDecimalNumber;
+    }
+
+    public void setSecondDigitDecimalNumber(int secondDigitDecimalNumber) {
+        this.secondDigitDecimalNumber = secondDigitDecimalNumber;
+    }
+
+    public void setDecNumberInAsciiTable(int decNumberInAsciiTable) {
+        this.decNumberInAsciiTable = decNumberInAsciiTable;
+    }
+
+    public void setHiddenMessage(ArrayList<Character> hiddenMessage) {
+        this.hiddenMessage = hiddenMessage;
+    }
+
+    public void setMessageToHide(ArrayList<Character> messageToHide) {
+        this.messageToHide = messageToHide;
+    }
+
+    public void setFourBitsArray(int[] fourBitsArray) {
+        this.fourBitsArray = fourBitsArray;
+    }
+
+    public static void setCurrentLine(int currentLine) {
+        Steganography.currentLine = currentLine;
+    }
+
     /**
      * Encoding process: Convert letter to Decimal Number
      *
@@ -84,7 +138,12 @@ public class Steganography {
      */
     public void encodingConvertLetterToDecimalNumber(char letter) {
 
+        if(!Character.isUpperCase(letter)){
+            throw new IllegalArgumentException("Letter is not capital or you used different characters then [A-Z]");
+        }
+
         decNumberInAsciiTable = (int) letter;
+
     }
 
 
@@ -242,6 +301,9 @@ public class Steganography {
 
     }
 
+    /**
+     * Converts decimal number to character that it represents in ASCII table and add that character to array list
+     */
 
     public void decodingConvertNumberAndAddItToArrayList() {
         hiddenMessage.add((char) decNumberInAsciiTable);
