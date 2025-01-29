@@ -138,7 +138,7 @@ public class SteganographyTest {
 
 
     @Test
-    void ConvertFirstBinaryToDecimal(){
+    void convertFirstBinaryToDecimal(){
 
         //int[] actualArray = {0, 1, 1, 0};
         // Decoding.ConvertFirstBinaryToDecimalAndReset(actual, 0);

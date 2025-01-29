@@ -1,6 +1,10 @@
 package white_space_steganography;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.Scanner;
 
 public class Encoding {
@@ -9,7 +13,31 @@ public class Encoding {
 
         Steganography steganography = new Steganography();
 
-        String fileName = "randomText.txt";
+        String sourceFile = "input-files/randomText.txt";
+        String outputFile = "output-files/randomText.txt";
+
+
+        // deleting content of output-file directory to prevent any issues
+        File outputDir = new File("output-files");
+        if (outputDir.exists() && outputDir.isDirectory()) {
+            for (File file : outputDir.listFiles()) {
+                if (file.isFile()) {
+                    file.delete();
+                }
+            }
+        } else {
+            System.out.println("Output directory does not exist.");
+        }
+
+
+
+        // Coping original file to directory "output-files"
+        try {
+            Files.copy(Paths.get(sourceFile), Paths.get(outputFile), StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            System.err.println("Error copying file: " + e.getMessage());
+        }
+
 
 
         // Zero width space = 0 in binary
@@ -44,7 +72,7 @@ public class Encoding {
             if (steganography.messageToHide.get(i) == ' ') {
                 // Add space character into array list
                 steganography.charToAdd = zwnj;
-                steganography.addCharacterToNextLine(fileName, steganography.charToAdd);
+                steganography.addCharacterToNextLine(outputFile, steganography.charToAdd);
                 continue;
             }
 
@@ -65,10 +93,10 @@ public class Encoding {
             for (int j = 0; j < steganography.fourBitsArray.length; j++) {
                 if (steganography.fourBitsArray[j] == 0) {
                     steganography.charToAdd = zwsp;
-                    steganography.addCharacterToNextLine(fileName, steganography.charToAdd);
+                    steganography.addCharacterToNextLine(outputFile, steganography.charToAdd);
                 } else {
                     steganography.charToAdd = zwj;
-                    steganography.addCharacterToNextLine(fileName, steganography.charToAdd);
+                    steganography.addCharacterToNextLine(outputFile, steganography.charToAdd);
                 }
             }
 
@@ -83,10 +111,10 @@ public class Encoding {
             for (int j = 0; j < steganography.fourBitsArray.length; j++) {
                 if (steganography.fourBitsArray[j] == 0) {
                     steganography.charToAdd = zwsp;
-                    steganography.addCharacterToNextLine(fileName, steganography.charToAdd);
+                    steganography.addCharacterToNextLine(outputFile, steganography.charToAdd);
                 } else {
                     steganography.charToAdd = zwj;
-                    steganography.addCharacterToNextLine(fileName, steganography.charToAdd);
+                    steganography.addCharacterToNextLine(outputFile, steganography.charToAdd);
                 }
             }
 

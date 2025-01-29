@@ -11,7 +11,7 @@ public class Decoding {
 
         Steganography steganography = new Steganography();
 
-        String fileName = "randomText.txt";
+        String fileName = "output-files/randomText.txt";
         File file = new File(fileName);
 
         // Zero width space = 0 in binary
