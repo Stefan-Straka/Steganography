@@ -8,24 +8,21 @@ import java.util.Arrays;
 
 public class SteganographyTest {
 
-   Steganography steganography = new Steganography();
+    Steganography steganography = new Steganography();
 
     @Order(2)
-    @Tags({ @Tag("API"), @Tag("ALL")})
+    @Tags({@Tag("API"), @Tag("ALL")})
     @Test
-    void decodingConcatenateTwoNumbers_validDigits_returnsDecNumberInAsciiTable(){
-
-        // setup
+    void decodingConcatenateTwoNumbers_validDigits_returnsDecNumberInAsciiTable() {
         steganography.setFirstDigitDecimalNumber(6);
         steganography.setSecondDigitDecimalNumber(9);
 
         steganography.decodingConcatenateTwoNumbers();
-        Assertions.assertEquals(69,steganography.getDecNumberInAsciiTable());
+        Assertions.assertEquals(69, steganography.getDecNumberInAsciiTable());
     }
 
     @Test
-    void decodingConcatenateTwoNumbers_invalidDigits_throwsException(){
-        // setup
+    void decodingConcatenateTwoNumbers_invalidDigits_throwsException() {
         steganography.setFirstDigitDecimalNumber(-6);
         steganography.setSecondDigitDecimalNumber(7);
 
@@ -34,8 +31,7 @@ public class SteganographyTest {
     }
 
     @Test
-    void decodingConcatenateTwoNumbers_outOfRangeDigits_throwsException(){
-        // setup
+    void decodingConcatenateTwoNumbers_outOfRangeDigits_throwsException() {
         steganography.setFirstDigitDecimalNumber(13);
         steganography.setSecondDigitDecimalNumber(5);
 
@@ -44,25 +40,22 @@ public class SteganographyTest {
     }
 
     @Test
-    void encodingConvertLetterToDecimalNumber_validCharacter_returnsDecNumberInAsciiTable(){
-
-
+    void encodingConvertLetterToDecimalNumber_validCharacter_returnsDecNumberInAsciiTable() {
         steganography.encodingConvertLetterToDecimalNumber('P');
-        Assertions.assertEquals(80,steganography.getDecNumberInAsciiTable());
+        Assertions.assertEquals(80, steganography.getDecNumberInAsciiTable());
 
 
     }
 
     @Test
-    void encodingConvertLetterToDecimalNumber_invalidCharacter_returnsDecNumberInAsciiTable(){
+    void encodingConvertLetterToDecimalNumber_invalidCharacter_returnsDecNumberInAsciiTable() {
 
-        Assertions.assertThrows(IllegalArgumentException.class, () ->steganography.encodingConvertLetterToDecimalNumber('p'));
-
+        Assertions.assertThrows(IllegalArgumentException.class, () -> steganography.encodingConvertLetterToDecimalNumber('p'));
 
     }
+
     @Test
-    void encodingSeparateSecondDigit(){
-        // setup
+    void encodingSeparateSecondDigit() {
         steganography.setDecNumberInAsciiTable(82);
 
         steganography.encodingSeparateSecondDigit();
@@ -70,41 +63,28 @@ public class SteganographyTest {
     }
 
     @Test
-    void arraylist(){
-        // setup
+    void arraylist() {
         steganography.setDecNumberInAsciiTable(78);
-
         steganography.decodingConvertNumberAndAddItToArrayList();
 
         ArrayList<Character> expectedList = new ArrayList<>();
         expectedList.add('N'); // Add a single character
-        //ArrayList<Character> expectedArrayList = new ArrayList<>(Arrays.asList('N'));
 
         Assertions.assertEquals(expectedList, steganography.getHiddenMessage());
     }
 
     @Test
-    void correctSizeOfArrayList(){
+    void correctSizeOfArrayList() {
         steganography.setDecNumberInAsciiTable(88);
         steganography.decodingConvertNumberAndAddItToArrayList();
         steganography.decodingAddSpaceIntoArrayList();
-        //Decoding.ConvertNumberAndAddItToArrayList(88, hiddenMessage);
-        //Decoding.addSpaceIntoArrayList(hiddenMessage);
 
         Assertions.assertEquals(2, steganography.hiddenMessage.size());
 
     }
 
     @Test
-    void charactersAtCorrectPlacesInArrayList(){
-
-        // H in ASCII Table
-        //Decoding.ConvertNumberAndAddItToArrayList(72, hiddenMessage);
-        // Z in ASCII Table
-        //Decoding.ConvertNumberAndAddItToArrayList(90, hiddenMessage);
-        // S in ASCII Table
-       // Decoding.ConvertNumberAndAddItToArrayList(83, hiddenMessage);
-
+    void charactersAtCorrectPlacesInArrayList() {
         steganography.setDecNumberInAsciiTable(89);
         steganography.decodingConvertNumberAndAddItToArrayList();
 
@@ -119,10 +99,7 @@ public class SteganographyTest {
     }
 
     @Test
-    void matchingArrays(){
-        //int[] fourBitsBuffer = {1, 1, 1, 2};
-        //int[] actualArray = {1, 1, 1, 2};
-
+    void matchingArrays() {
         steganography.resetFourBitsArray();
 
         steganography.decodingAddBit_1_IntoArray();
@@ -132,20 +109,12 @@ public class SteganographyTest {
 
         int[] expectedArray = {1, 1, 1, 0};
 
-
         Assertions.assertArrayEquals(expectedArray, steganography.getFourBitsArray());
     }
 
 
     @Test
-    void convertFirstBinaryToDecimal(){
-
-        //int[] actualArray = {0, 1, 1, 0};
-        // Decoding.ConvertFirstBinaryToDecimalAndReset(actual, 0);
-       // int actual = Decoding.ConvertFirstBinaryToDecimalAndReset(actualArray,0);
-
-
-
+    void convertFirstBinaryToDecimal() {
         steganography.resetFourBitsArray();
 
         steganography.decodingAddBit_0_IntoArray();
@@ -155,7 +124,6 @@ public class SteganographyTest {
 
         steganography.decodingConvertBinaryArrayToFirstDigitAndResetArray();
 
-        //Assertions.assertEquals(6,actual,"Expected 6 and got: "+actual);
         Assertions.assertEquals(6, steganography.getFirstDigitDecimalNumber());
     }
 }

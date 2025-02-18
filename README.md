@@ -1,7 +1,7 @@
 
 # Zero-Width Steganography
 
-Steganography program that encode and decode hidden message in various file.
+Steganography program that encodes and decodes hidden messages in various files.
 
 
 
@@ -37,29 +37,20 @@ Download Maven and install it on your system.
     
 ## 📝 Usage
 ### Preparation
-You can use files that are already inside the project structure, or you could upload your own.  
+You can use files that are already inside the project structure, or you could upload your own into a folder "input-files".  
 Supported files: txt, srt, html, xml, md  
-Inside classes Decoding and Encoding, rename variable "fileName" to the appropriate file you want to use.
-Before running program copy file you want to use from "fresh-files-to-use" directory to "file-to-use" directory.
+Inside classes Decoding and Encoding, rename variables "fileName" to the appropriate file you want to use.
+
 ```bash
 steganography/
-├── src/
-│   ├── main/
-│   ├── resources/
-│   │   ├── files-to-use/
-│   │   └── fresh-files-to-use/           
-│   │          
-│   └── test/
+├── .idea/
+├── input-files/
+├── output-files/
+├── src/         
 ├── target/
 ├── .gitignore
-├── pom.xml
-└── steganography.iml
+└── pom.xml
 ```
-
-It is not recommended to encode hidden message into file where there is already encoded hidden message.
-
-
-
 
 1. Run class Controler and chose mode you want
 - Mode 1: Encoding (will encode hidden message into file)
